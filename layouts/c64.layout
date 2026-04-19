@@ -1,0 +1,13 @@
+name c64
+desc C64: 40KB RAM | BASIC $A000 | CIA $DC00 | KERNAL $E000
+
+# Simplified Commodore 64 layout (no bank switching, no I/O page at $D000).
+# VIA stub emulates CIA 1 (timers + port A/B — enough for keyboard scanning).
+# Load KERNAL: ./scripts/write_ram.py port kernal.bin --base 0xE000
+# Load BASIC:  ./scripts/write_ram.py port basic.bin  --base 0xA000
+# Reset vector at $FFFC/$FFFD (inside KERNAL) → cold-start routine.
+
+ram  0000  A000   # $0000-$9FFF  40 KB RAM
+rom  A000  2000   # $A000-$BFFF   8 KB BASIC ROM
+via  DC00  0010   # $DC00-$DC0F  CIA 1 (approximated by VIA)
+rom  E000  2000   # $E000-$FFFF   8 KB KERNAL ROM

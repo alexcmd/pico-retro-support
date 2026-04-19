@@ -1,0 +1,25 @@
+# CMake build output
+build/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Compiled objects (shouldn't appear outside build/, but just in case)
+*.o
+*.a
+*.elf
+*.uf2
+*.bin
+*.hex
+*.map
+*.dis
+
+# Claude Code session data
+.claude/

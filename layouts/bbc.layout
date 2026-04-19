@@ -1,0 +1,13 @@
+name bbc
+desc BBC Micro: 32KB RAM | Sideways ROM $8000 | sysVIA $FE40 | OS $C000
+
+# BBC Micro Model B layout.
+# VIA listed before the OS ROM entry so it wins priority for $FE40-$FE4F.
+# Load sideways ROM: ./scripts/write_ram.py port lang.bin --base 0x8000
+# Load OS ROM:       ./scripts/write_ram.py port os.bin   --base 0xC000
+# Reset vector at $FFFC/$FFFD (inside OS ROM).
+
+ram  0000  8000   # $0000-$7FFF  32 KB RAM
+via  FE40  0010   # $FE40-$FE4F  System VIA (priority over OS ROM below)
+rom  8000  4000   # $8000-$BFFF  16 KB sideways ROM
+rom  C000  4000   # $C000-$FFFF  16 KB OS ROM

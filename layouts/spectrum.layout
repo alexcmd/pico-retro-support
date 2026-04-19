@@ -1,0 +1,13 @@
+name spectrum
+desc ZX Spectrum 48K: ROM $0000-$3FFF | RAM $4000-$FFFF
+
+# ZX Spectrum 48K memory map.
+# ROM is 16KB (vs ZX81's 8KB). RAM starts immediately after at $4000.
+# $4000-$5AFF: display file (6144B bitmap + 768B attributes = 6912B)
+# $5B00-$FFFF: user RAM / BASIC
+# I/O is port-based in the original (ULA on port $FE) — no VIA needed.
+# Load ROM: ./scripts/write_ram.py port spectrum48.rom --base 0x0000
+# Z80 reset vector is always $0000.
+
+rom  0000  4000   # $0000-$3FFF  16 KB ROM
+ram  4000  C000   # $4000-$FFFF  48 KB RAM

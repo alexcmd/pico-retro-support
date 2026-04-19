@@ -1,0 +1,24 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "rp2350-debug",
+            "displayName": "RP2350 Debug (Pico 2)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "PICO_BOARD": "pico2",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_PREFIX_PATH": "$env{HOME}/pico-tools"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "rp2350-debug",
+            "configurePreset": "rp2350-debug",
+            "displayName": "Build RP2350 Debug"
+        }
+    ]
+}

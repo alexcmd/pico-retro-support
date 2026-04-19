@@ -1,0 +1,10 @@
+name generic
+desc Generic 6502: 48KB RAM | VIA $C000 | ROM $C010-$FFFF
+
+# Clean separation: all RAM below $C000, I/O then ROM above.
+# Load ROM:  ./scripts/write_ram.py /dev/ttyACM1 rom.bin --base 0xC010
+# Reset vec: $FFFC/$FFFD
+
+ram  0000  C000   # $0000-$BFFF  48 KB RAM (zero page, stack, heap)
+via  C000  0010   # $C000-$C00F  VIA 6522
+rom  C010  3FF0   # $C010-$FFFF  ~16 KB ROM

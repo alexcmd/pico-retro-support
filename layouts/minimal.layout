@@ -1,0 +1,10 @@
+name minimal
+desc Minimal: 60KB RAM | VIA $F000 | 4KB ROM $F010-$FFFF
+
+# Maximum RAM, tiny ROM — good for bare-metal development or testing.
+# Load ROM: ./scripts/write_ram.py port code.bin --base 0xF010
+# Reset vector at $FFFC/$FFFD.
+
+ram  0000  F000   # $0000-$EFFF  60 KB RAM
+via  F000  0010   # $F000-$F00F  VIA 6522
+rom  F010  0FF0   # $F010-$FFFF   4 KB ROM

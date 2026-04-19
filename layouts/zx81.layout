@@ -1,0 +1,10 @@
+name zx81
+desc ZX81: ROM $0000-$1FFF | RAM $4000-$FFFF (Z80 layout)
+
+# Sinclair ZX81 / ZX Spectrum Z80 layout.
+# $2000-$3FFF is unmapped (reads 0xFF) — ZX81 uses this for display file mirror.
+# Load ROM: ./scripts/write_ram.py port zx81.rom --base 0x0000
+# Z80 reset vector is always $0000.
+
+rom  0000  2000   # $0000-$1FFF   8 KB ZX81 ROM
+ram  4000  C000   # $4000-$FFFF  48 KB RAM
